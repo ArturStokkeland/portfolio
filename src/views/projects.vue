@@ -1,12 +1,17 @@
 <template>
-  <div class="flex flex-col gap-4 mb-4">
-    <h1 class="text-3xl text-center">Portfolio</h1>
+  <div class="flex flex-col gap-6 mb-4">
+    <h1 class="text-4xl text-center font-bold">Portfolio</h1>
     <!-- <cool-button /> -->
-    <div class="flex flex-wrap justify-center gap-2">
+    <div
+      class="grid grid-cols-3 justify-center gap-2 md:grid-cols-5 2xl:grid-cols-8"
+    >
       <p
         v-for="tag in tags"
-        class="bg-neutral-900 p-2 rounded text-center hover:cursor-pointer hover:brightness-125"
-        :class="{ 'brightness-125': currentFilter === tag }"
+        class="p-2 rounded text-center hover:cursor-pointer hover:brightness-125 hover:text-neutral-200 text"
+        :class="{
+          'bg-cyan-600 text-neutral-200': currentFilter === tag,
+          'bg-neutral-900 text-neutral-200': currentFilter !== tag,
+        }"
         @click="filterProjects(tag)"
       >
         {{ tag }}

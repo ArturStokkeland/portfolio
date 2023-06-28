@@ -1,7 +1,26 @@
 enum Tags {
+  FRONT = "Front-end",
+  BACK = "Back-end",
+  FULL = "Full-stack",
+  APP = "Application",
   HTML = "HTML",
   CSS = "CSS",
-  JAVASCRIPT = "JavaScript",
+  TCSS = "Tailwind CSS",
+  JS = "JavaScript",
+  TS = "TypeScript",
+  VUE = "Vue.js",
+  ANGULAR = "Angular",
+  DJANGO = "Django",
+  PHP = "PHP",
+  JAVA = "Java",
+  JAVAFX = "JavaFX",
+  FXGL = "FXGL",
+  KOTLIN = "Kotlin",
+  SQL = "SQL",
+  MYSQL = "MySQL",
+  P5 = "p5.js",
+  BABYLON = "Babylon.js",
+  SOLIDITY = "Solidity",
 }
 
 export default Tags;

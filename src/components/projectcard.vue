@@ -2,18 +2,18 @@
   <div
     @click="goToProject"
     ref="card"
-    class="bg-[rgba(255,255,255,0.1)] p-4 max-w-xs rounded shadow-hard hover:cursor-pointer border-t border-t-[rgba(255,255,255,0.5)] border-l border-l-[rgba(255,255,255,0.5)] backdrop-blur"
+    class="bg-[rgba(255,255,255,0.1)] p-4 w-full rounded shadow-hard hover:cursor-pointer border-t border-t-[rgba(255,255,255,0.5)] border-l border-l-[rgba(255,255,255,0.5)] backdrop-blur"
   >
     <img
-      :src="'/images/' + thumbnail + '.png'"
+      :src="'/images/' + url + '/' + thumbnail + '.png'"
       alt="project thumbnail"
       draggable="false"
-      class="select-none"
+      class="select-none aspect-video"
     />
-    <div class="flex flex-col gap-2 mt-4">
-      <p class="text-center select-none">{{ title }}</p>
+    <div class="flex flex-col gap-4 mt-4">
+      <h2 class="text-2xl text-center select-none">{{ title }}</h2>
       <p class="select-none">{{ short }}</p>
-      <div class="flex gap-2">
+      <div class="flex gap-2 flex-wrap">
         <div v-for="tag in tags" class="bg-neutral-900 rounded py-1 px-2">
           <p class="select-none">{{ tag }}</p>
         </div>

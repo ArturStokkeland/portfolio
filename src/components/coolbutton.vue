@@ -15,11 +15,10 @@
       :class="{
         'bg-emerald-800': getColourTheme.emerald,
         'bg-red-800': getColourTheme.red,
-        'bg-blue-800': getColourTheme.blue,
         'bg-yellow-800': getColourTheme.yellow,
         'bg-stone-700': getColourTheme.stone,
         'bg-neutral-950': getColourTheme.neutral,
-        'bg-cyan-900': getColourTheme.blue,
+        'bg-cyan-800': getColourTheme.blue,
       }"
     ></div>
     <div
@@ -27,14 +26,13 @@
       :class="{
         'bg-emerald-600': getColourTheme.emerald,
         'bg-red-600': getColourTheme.red,
-        'bg-blue-600': getColourTheme.blue,
         'bg-yellow-600': getColourTheme.yellow,
         'bg-stone-600': getColourTheme.stone,
         'bg-neutral-800': getColourTheme.neutral,
-        'bg-cyan-700': getColourTheme.blue,
+        'bg-cyan-600': getColourTheme.blue,
       }"
     >
-      <p class="select-none">{{ text }}</p>
+      <p class="select-none text-neutral-300 font-bold">{{ text }}</p>
     </div>
   </div>
 </template>
@@ -54,7 +52,6 @@ const getColourTheme = computed(() => {
   return {
     emerald: props.colortheme === "emerald",
     red: props.colortheme === "red",
-    blue: props.colortheme === "blue",
     yellow: props.colortheme === "yellow",
     stone: props.colortheme === "stone",
     neutral: props.colortheme === "neutral",

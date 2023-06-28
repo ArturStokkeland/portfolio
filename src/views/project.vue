@@ -1,76 +1,75 @@
 <template>
-  <!-- <router-link to="/portfolio" class="absolute left-4"> Back </router-link> -->
-  <!-- <router-link to="/portfolio" class="hidden lg:block">
-    <div
-      class="flex justify-center items-center h-[calc(100%-4rem)] w-40 fixed left-0 top-16 bg-gradient-to-l from-[rgba(0,0,0,0.0)] to-neutral-900 hover:cursor-pointer hover:to-neutral-950"
-    >
-      <p class="text-neutral-200 text-4xl font-bold">&lt;</p>
-    </div>
-  </router-link> -->
-  <router-link
-    to="/portfolio"
-    class="group hidden lg:flex justify-center items-center h-[calc(100%-4rem)] w-40 fixed left-0 top-16 bg-gradient-to-l from-[rgba(0,0,0,0.0)] to-neutral-900 hover:cursor-pointer hover:w-48 transition-all duration-500"
-  >
-    <p class="text-neutral-200 text-4xl font-bold text-shadow">&lt;</p>
-  </router-link>
-  <div class="absolute z-50 top-0 left-8 h-16 flex items-center">
+  <div>
     <router-link
       to="/portfolio"
-      class="font-bold w-48 h-10 inline-block lg:hidden"
-      ><cool-button :text="'Back to portfolio'" :colortheme="'blue'"
-    /></router-link>
-  </div>
-
-  <div ref="modal" class="top-0 left-0 z-50 w-full h-full fixed hidden">
-    <div
-      class="w-full h-full bg-[rgba(0,0,0,0.5)] hover:cursor-pointer"
-      @click="closeModal"
-    ></div>
-    <div
-      class="absolute top-0 right-0 m-2 p-4 rounded-full flex flex-col gap-[12px] bg-neutral-800 hover:cursor-pointer hover:bg-neutral-600 hover:shadow-lg"
-      @click="closeModal"
+      class="group hidden lg:flex justify-center items-center h-[calc(100%-4rem)] w-40 fixed left-0 top-16 bg-gradient-to-l from-[rgba(0,0,0,0.0)] to-neutral-900 hover:cursor-pointer hover:w-48 transition-all duration-500"
     >
-      <span class="close-left bg-neutral-200 block h-[2px] w-[20px]"></span>
-      <span class="close-right bg-neutral-200 block h-[2px] w-[20px]"></span>
-    </div>
-    <img ref="modalImg" src="" alt="modal image" class="modalImage" />
-  </div>
-  <div class="flex flex-col gap-4 mb-4">
-    <h1 class="font-bold text-4xl">
-      {{ currentProject?.title }}
-    </h1>
-    <div class="flex gap-2">
-      <div
-        v-for="tag in currentProject?.tags"
-        class="flex bg-neutral-900 rounded py-1 px-2"
-      >
-        <p class="inline text-neutral-200">{{ tag }}</p>
-      </div>
+      <p class="text-neutral-200 text-4xl font-bold text-shadow">&lt;</p>
+    </router-link>
+    <div class="absolute z-50 top-0 left-8 h-16 flex items-center">
+      <router-link
+        to="/portfolio"
+        class="font-bold w-48 h-10 inline-block lg:hidden"
+        ><cool-button :text="'Back to portfolio'" :colortheme="'blue'"
+      /></router-link>
     </div>
 
-    <div class="grid grid-cols-1 gap-8 2xl:grid-cols-2">
-      <div class="flex flex-col gap-4">
+    <div ref="modal" class="top-0 left-0 z-50 w-full h-full fixed hidden">
+      <div
+        class="w-full h-full bg-[rgba(0,0,0,0.5)] hover:cursor-pointer"
+        @click="closeModal"
+      ></div>
+      <div
+        class="absolute top-0 right-0 m-2 p-4 rounded-full flex flex-col gap-[12px] bg-neutral-800 hover:cursor-pointer hover:bg-neutral-600 hover:shadow-lg"
+        @click="closeModal"
+      >
+        <span class="close-left bg-neutral-200 block h-[2px] w-[20px]"></span>
+        <span class="close-right bg-neutral-200 block h-[2px] w-[20px]"></span>
+      </div>
+      <img ref="modalImg" src="" alt="modal image" class="modalImage" />
+    </div>
+    <div class="flex flex-col gap-4 mb-4">
+      <h1 class="font-bold text-4xl">
+        {{ currentProject?.title }}
+      </h1>
+      <div class="flex flex-wrap gap-2">
         <div
-          class="w-full relative aspect-video rounded-lg bg-neutral-900 overflow-hidden"
+          v-for="tag in currentProject?.tags"
+          class="flex bg-neutral-900 rounded py-1 px-2"
         >
+          <p class="inline text-neutral-200">{{ tag }}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 2xl:grid-cols-2">
+        <div class="flex flex-col gap-4">
           <div
-            class="w-full h-full flex transition-all duration-300"
-            ref="carouselContent"
+            class="w-full relative aspect-video rounded-lg bg-neutral-900 overflow-hidden"
           >
-            <img
-              v-for="video in currentProject?.videos"
-              class="min-w-full min-h-full object-contain"
-              src="/images/test.png"
-              alt="video"
-            /><img
-              v-for="image in currentProject?.images"
-              class="min-w-full min-h-full object-contain hover:cursor-pointer"
-              :src="'/images/' + image + '.png'"
-              alt="image"
-              @click="openModal('/images/' + image + '.png')"
-            />
-          </div>
-          <div
+            <div
+              class="w-full h-full flex transition-all duration-300"
+              ref="carouselContent"
+            >
+              <iframe
+                allowfullscreen
+                v-for="video in currentProject?.videos"
+                class="min-w-full min-h-full"
+                :src="'https://www.youtube.com/embed/' + video"
+              ></iframe>
+
+              <img
+                v-for="image in currentProject?.images"
+                class="min-w-full min-h-full object-contain hover:cursor-pointer"
+                :src="'/images/' + currentProject?.url + '/' + image + '.png'"
+                alt="image"
+                @click="
+                  openModal(
+                    '/images/' + currentProject?.url + '/' + image + '.png'
+                  )
+                "
+              />
+            </div>
+            <!-- <div
             class="absolute flex items-center justify-center left-0 top-0 w-1/4 h-full bg-gradient-to-l from-[rgba(0,0,0,0.0)] to-[rgba(0,0,0,0.8)] z-40 opacity-0 hover:cursor-pointer hover:opacity-100 transition-all duration-300"
             @click="changeSlide(currentSlide - 1)"
           >
@@ -89,17 +88,35 @@
             >
               &gt;
             </p>
+          </div> -->
+          </div>
+          <div class="flex justify-center gap-8 items-center">
+            <div class="h-8 w-24" @click="changeSlide(currentSlide - 1)">
+              <cool-button :text="'Prev'" :colortheme="'blue'"></cool-button>
+            </div>
+            <div class="flex justify-center gap-4 items-center" ref="carousel">
+              <div
+                v-for="(num, index) in currentProject?.videos?.concat(
+                  currentProject?.images
+                )"
+                class="rounded-full w-3 h-3 bg-neutral-900 hover:cursor-pointer hover:scale-150 hover:bg-cyan-600 transition-all duration-500"
+                :class="{ active: index == 0 }"
+                @click="changeSlide(index)"
+              ></div>
+            </div>
+            <div class="h-8 w-24" @click="changeSlide(currentSlide + 1)">
+              <cool-button :text="'Next'" :colortheme="'blue'"></cool-button>
+            </div>
           </div>
         </div>
-        <div class="flex justify-center gap-4 items-center" ref="carousel">
-          <div
-            v-for="(num, index) in currentProject?.videos?.concat(
-              currentProject?.images
-            )"
-            class="rounded-full w-3 h-3 bg-neutral-900 hover:cursor-pointer hover:scale-150 hover:bg-cyan-600 transition-all duration-500"
-            :class="{ active: index == 0 }"
-            @click="changeSlide(index)"
-          ></div>
+
+        <div>
+          <h2
+            class="text-3xl font-bold pb-4 mb-4 border-b-[1px] border-neutral-500"
+          >
+            About this project
+          </h2>
+          <p class="text-lg">{{ currentProject?.desc }}</p>
         </div>
       </div>
 
@@ -107,83 +124,71 @@
         <h2
           class="text-3xl font-bold pb-4 mb-4 border-b-[1px] border-neutral-500"
         >
-          About this project
+          Things to note
         </h2>
-        <p class="text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-          eligendi, animi sunt aperiam corporis rerum eum ullam sapiente non
-          aliquam fugit quae labore, facere repellat, ut dignissimos odio eaque
-          iure velit dolorum necessitatibus autem quia. Fuga est quas cum fugit
-          similique quae incidunt nemo, sunt quia perferendis veniam alias neque
-          officiis optio obcaecati dolores vitae ab blanditiis porro sed error
-          saepe deleniti molestias. Odio aspernatur error voluptatem, doloremque
-          quam sed a placeat aperiam, minus, excepturi sit quo voluptas ratione
-          vitae reiciendis eum? Quidem earum officia ducimus! Laboriosam ea at
-          error unde, iste culpa tenetur, alias dolorum, molestiae omnis eius
-          odio!
-        </p>
+        <p class="text-lg" v-html="currentProject?.note"></p>
       </div>
-    </div>
 
-    <div>
-      <h2
-        class="text-3xl font-bold pb-4 mb-4 border-b-[1px] border-neutral-500"
-      >
-        Things to note
-      </h2>
-      <p class="text-lg">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi,
-        animi sunt aperiam corporis rerum eum ullam sapiente non aliquam fugit
-        quae labore, facere repellat, ut dignissimos odio eaque iure velit
-        dolorum necessitatibus autem quia. Fuga est quas cum fugit similique
-        quae incidunt nemo, sunt quia perferendis veniam alias neque officiis
-        optio obcaecati dolores vitae ab blanditiis porro sed error saepe
-        deleniti molestias. Odio aspernatur error voluptatem, doloremque quam
-        sed a placeat aperiam, minus, excepturi sit quo voluptas ratione vitae
-        reiciendis eum? Quidem earum officia ducimus! Laboriosam ea at error
-        unde, iste culpa tenetur, alias dolorum, molestiae omnis eius odio!
-      </p>
-    </div>
-
-    <div>
-      <h2
-        class="text-3xl font-bold pb-4 mb-4 border-b-[1px] border-neutral-500"
-      >
-        Details
-      </h2>
-      <div class="flex flex-col gap-4">
-        <div>
-          <p class="text-lg">Date worked on:</p>
-          <p class="text-lg">{{ currentProject?.date }}</p>
-        </div>
-        <div>
-          <p class="text-lg">Tags:</p>
-          <div class="flex gap-2">
-            <div
-              v-for="tag in currentProject?.tags"
-              class="flex bg-neutral-900 rounded py-1 px-2"
+      <div>
+        <h2
+          class="text-3xl font-bold pb-4 mb-4 border-b-[1px] border-neutral-500"
+        >
+          Technologies used
+        </h2>
+        <div class="mx-5">
+          <ul>
+            <li
+              v-for="tech in currentProject?.tech"
+              class="list-disc list-outside text-cyan-600 text-xl"
             >
-              <p class="inline text-neutral-200">{{ tag }}</p>
+              <span class="text-neutral-400">{{ tech }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2
+          class="text-3xl font-bold pb-4 mb-4 border-b-[1px] border-neutral-500"
+        >
+          Details
+        </h2>
+        <div class="flex flex-col gap-4">
+          <div>
+            <p class="text-lg">Date finished:</p>
+            <p class="text-lg">{{ currentProject?.date }}</p>
+          </div>
+          <div>
+            <p class="text-lg">Tags:</p>
+            <div class="flex gap-2">
+              <div
+                v-for="tag in currentProject?.tags"
+                class="flex bg-neutral-900 rounded py-1 px-2"
+              >
+                <p class="inline text-neutral-200">{{ tag }}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <p class="text-lg">Links:</p>
-          <div class="flex gap-4">
-            <a
-              target="_blank"
-              rel="noopener"
-              href="/cv_artur.pdf"
-              class="w-40 h-10 inline-block"
-              ><cool-button :text="'View Live'" :colortheme="'blue'"
-            /></a>
-            <a
-              target="_blank"
-              rel="noopener"
-              href="/cv_artur.pdf"
-              class="w-40 h-10 inline-block"
-              ><cool-button :text="'View on Github'" :colortheme="'blue'"
-            /></a>
+          <div>
+            <p class="text-lg">Links:</p>
+            <div class="flex gap-4">
+              <a
+                v-if="currentProject?.live"
+                target="_blank"
+                rel="noopener"
+                :href="currentProject?.live"
+                class="w-40 h-10 inline-block"
+                ><cool-button :text="'View Live'" :colortheme="'blue'"
+              /></a>
+              <a
+                v-if="currentProject?.github"
+                target="_blank"
+                rel="noopener"
+                :href="currentProject?.github"
+                class="w-40 h-10 inline-block"
+                ><cool-button :text="'View on Github'" :colortheme="'blue'"
+              /></a>
+            </div>
           </div>
         </div>
       </div>
@@ -197,7 +202,6 @@ import { ref } from "vue";
 import projects from "@/assets/projects.ts";
 
 const route = useRoute();
-console.log(route.matched);
 let currentRoute = route.params.url;
 let currentProject = projects.find((project) => project.url == currentRoute);
 
