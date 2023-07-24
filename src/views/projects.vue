@@ -3,7 +3,7 @@
     <h1 class="text-4xl text-center font-bold">Portfolio</h1>
     <!-- <cool-button /> -->
     <div
-      class="grid grid-cols-3 justify-center gap-2 md:grid-cols-5 2xl:grid-cols-8"
+      class="hidden grid-cols-3 justify-center gap-2 md:grid-cols-5 2xl:grid-cols-8 md:grid"
     >
       <p
         v-for="tag in tags"

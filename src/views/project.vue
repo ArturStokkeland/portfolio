@@ -6,7 +6,7 @@
     >
       <p class="text-neutral-200 text-4xl font-bold text-shadow">&lt;</p>
     </router-link>
-    <div class="absolute z-50 top-0 left-8 h-16 flex items-center">
+    <div class="fixed z-50 top-0 left-8 h-16 flex items-center">
       <router-link
         to="/portfolio"
         class="font-bold w-48 h-10 inline-block lg:hidden"
@@ -44,7 +44,7 @@
       <div class="grid grid-cols-1 gap-8 2xl:grid-cols-2">
         <div class="flex flex-col gap-4">
           <div
-            class="w-full relative aspect-video rounded-lg bg-neutral-900 overflow-hidden"
+            class="w-full relative aspect-video rounded-lg bg-neutral-900 overflow-hidden shadow-xl"
           >
             <div
               class="w-full h-full flex transition-all duration-300"
@@ -160,7 +160,7 @@
           </div>
           <div>
             <p class="text-lg">Tags:</p>
-            <div class="flex gap-2">
+            <div class="flex flex-wrap gap-2">
               <div
                 v-for="tag in currentProject?.tags"
                 class="flex bg-neutral-900 rounded py-1 px-2"
@@ -188,6 +188,12 @@
                 class="w-40 h-10 inline-block"
                 ><cool-button :text="'View on Github'" :colortheme="'blue'"
               /></a>
+              <p
+                v-if="!currentProject?.live && !currentProject?.github"
+                class="text-lg"
+              >
+                No links available
+              </p>
             </div>
           </div>
         </div>

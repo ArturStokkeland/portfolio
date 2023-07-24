@@ -3,7 +3,7 @@ import tags from "@/assets/tags.ts";
 interface Project {
   title: string; // Title of the project
   url: string; // relative URL to the project page
-  thumbnail: string; // thumbnail image name
+  thumbnail: string; // thumbnail image name (without extension, but assumes png)
   short: string; // Short description of the project
   desc: string; // Long description of the project
   note: string; // Noteable things about the project
@@ -13,7 +13,7 @@ interface Project {
   github: string; // URL to the GitHub repository
   live: string; // URL to the live version of the project
   videos: string[]; // List of YouTube video IDs
-  images: string[]; // List of image names
+  images: string[]; // List of image names (without extension, but assumes png)
 }
 
 const projects: Project[] = [
@@ -24,9 +24,9 @@ const projects: Project[] = [
     thumbnail: "thumbnail",
     short:
       "A website to showcase my projects and skills, and to let people know how to contact me.",
-    desc: "TODO",
-    note: "TODO",
-    tech: ["TODO"],
+    desc: "There isn't much to say, you are currently viewing it so have a look around! On this website you can find my portfolio showcasing some of the projects I have worked on, as well as some information about my background as a programmer and my skills, and of course a page detailing how to contact me along with links to my LinkedIn and my CV.",
+    note: "The project is built with Vue.js, and uses Tailwind CSS for styling. The website is fully responsive, and will adapt to any screen size.",
+    tech: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "TypeScript", "Vue.js"],
     date: "Continually updated",
     tags: [
       tags.FRONT,
@@ -37,10 +37,10 @@ const projects: Project[] = [
       tags.TS,
       tags.VUE,
     ],
-    github: "",
+    github: "https://github.com/ArturStokkeland/portfolio",
     live: "",
     videos: [],
-    images: [],
+    images: ["thumbnail", "portfolio", "filter"],
   },
   {
     title: "Crossplay.tv",
@@ -48,15 +48,23 @@ const projects: Project[] = [
     thumbnail: "thumbnail",
     short:
       "A virtual reality social media platform with a focus on content creation and sharing.",
-    desc: "TODO",
-    note: "TODO",
-    tech: ["TODO"],
-    date: "TODO",
-    tags: [],
+    desc: "CrossPlay Tv is a virtual reality social media platform with a focus on content creation and sharing. The project is an attempt to bridge the gap between creators and audience. It aims to provide immersive experiences for its users, and to give the tools required for Virtual Reality cotent creation and streaming. This project was conducted in partnership with Meta EU.",
+    note: "The project is built using the Unity game engine. It is in theory platform agnostic, but as it relies on the Meta Avatars SDK, it is primarily targeted for the Oculus Quest 2. It uses Unity's built in XR Toolkit to handle VR interactions, and Photon Fusion along with Photon Voice to handle multiplayer interactions. The Meta Avatars SDK is used to fetch users' avatars which they created for the Oculus and displaying it in the game, making it a more personal experience. The project is still in development, and as such is not yet available to view.",
+    tech: [
+      "C#",
+      "Unity",
+      "Unity XR Toolkit",
+      "Oculus Quest 2",
+      "Meta Avatars SDK",
+      "Photon Fusion",
+      "Photon Voice",
+    ],
+    date: "In development",
+    tags: [tags.APP, tags.CSHARP, tags.UNITY],
     github: "",
     live: "",
-    videos: [],
-    images: [],
+    videos: ["czgsmPnc4GE"],
+    images: ["1", "2", "3"],
   },
   {
     title: "Paypal Clone",
@@ -64,11 +72,11 @@ const projects: Project[] = [
     thumbnail: "thumbnail",
     short:
       "A simplified feature clone of the PayPal website, using fake money.",
-    desc: "TODO",
-    note: "TODO",
-    tech: ["TODO"],
-    date: "TODO",
-    tags: [],
+    desc: "A simplified feature clone of the PayPal website, using fake money. Users can register an account at which point they receive 1000£ (GBP) which is converted to the currency they selected upon registering. Users can send and receive money. Users can also request money and accept or decline requests. Admin users have access to an admin page where they can create admin accounts, view all registered users, and view all transactions. The app also comes with an API for converting between currencies.",
+    note: "The project was build with an emphasis on security and ACID principles. For security, Django's built in security features were utilized, such as password hashing, CSRF tokens, and SQL injection protection. For ACID principles, as the project is dealing with money (albeit fake), it is important to make sure any transactions are completed properly. To handle this, all transactions lock the database while being executed, to ensure that only one transaction is happening at a time, additionally all transactions will revert any action performed on the database if the transaction fails at any point, ensuring that transactions are either completed fully, or not completed at all.",
+    tech: ["Python", "Django", "Django REST Framework"],
+    date: "April 2023",
+    tags: [tags.FRONT, tags.BACK, tags.FULL, tags.PYTHON, tags.DJANGO],
     github: "https://github.com/ArturStokkeland/paypal-clone",
     live: "",
     videos: ["U7WZBRvhHaQ"],
@@ -80,10 +88,19 @@ const projects: Project[] = [
     thumbnail: "thumbnail",
     short:
       "A collection of algorithms for solving various puzzles, optionally with a given initial state.",
-    desc: "TODO",
-    note: "TODO",
-    tech: ["TODO"],
-    date: "TODO",
+    desc: "This project is a collection of algorithms for solving various puzzles. The puzzles it can solve are the N-Queens problem, a 2D polysphere puzzle on a 5x11 grid (see IQ Puzzler Pro), and a 3D polysphere puzzle shaped in a pyramid (see IQ Puzzler Pro). The website offers a user interface for each puzzle where the user can place pieces in a partial configuration, and will then solve the puzzle and show all possible solutions with the partial configuration. This is of course optional and given an empty state all possible solutions will be shown instead.",
+    note: "The N-Queens problem uses a backtracking algorithm to find solutions.<br><br>The 2D Polysphere puzzle uses Knuth's Algorithm X to find solutions.<br><br>The 3D Polysphere puzzle also uses Knuth's Algorithm X to find solutions. Additionally it uses Babylon.js to create a 3D user interface for the website, this was done because it provides the best user experience for this particular problem where it is necessary to view and place puzzle pieces inside of a pyramid structure.",
+    tech: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Angular",
+      "Babylon.js",
+      "Backtracking Algorithm",
+      "Knuth's Algorithm X",
+    ],
+    date: "December 2022",
     tags: [
       tags.FRONT,
       tags.HTML,
@@ -96,8 +113,8 @@ const projects: Project[] = [
     github:
       "https://github.com/ArturStokkeland/Advanced-Software-Engineering-Portfolio",
     live: "",
-    videos: [],
-    images: [],
+    videos: ["YMRw-Yi-OXQ"],
+    images: ["thumbnail", "nqueens", "polysphere", "polysphere3d"],
   },
   {
     title: "Flowerboy",
@@ -105,10 +122,20 @@ const projects: Project[] = [
     thumbnail: "thumbnail",
     short:
       "Murakami inspired art generator for tokenized assets on the Ethereum blockchain.",
-    desc: "TODO",
-    note: "TODO",
-    tech: ["TODO"],
-    date: "TODO",
+    desc: "Murakami inspired art generator for tokenized assets on the Ethereum blockchain. Users can log in with a metamask wallet. They will then be able to purchase (or mint as it is called) a unique piece of art, which is randomly generated at the time of mint. When minted it becomes a tokenized asset which will exist on the Ethereum blockchain, and specifically in the user's wallet. The art itself is stored on the IPFS network. The user can view their art on the website. The user can also trade it on third party marketplaces as it complies with the ERC-721 standard and seemlessly integrates",
+    note: "The website is built using HTML, CSS and JavaScript, with a backend built using Express.js. The website is hosted on Azure and integrates a database from firebase.<br><br>A smart contract was developed using solidity and is hosted on the Ethereum blockchain. The smart contract is fully ERC-721 compliant and integrates with other decentralized services.<br><br>The art is generated using the p5.js library. The art is laid out using a poisson-disc algorithm to ensure that objects are relatively evenly distributed on the canvas.",
+    tech: [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "P5.js",
+      "Express.js",
+      "Solidity",
+      "Ethereum",
+      "Azure",
+      "Firebase",
+    ],
+    date: "January 2022",
     tags: [
       tags.FRONT,
       tags.BACK,
@@ -122,7 +149,7 @@ const projects: Project[] = [
     github: "",
     live: "https://www.flowerboy.art/",
     videos: ["Jc_gbrqSS3I"],
-    images: [],
+    images: ["1", "2", "3", "4", "5", "6"],
   },
   {
     title: "AI - Behaviour Trees",

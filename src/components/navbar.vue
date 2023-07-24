@@ -16,9 +16,9 @@
       <router-link to="/portfolio" class="navlink">
         <cool-button :text="'Portfolio'" :colortheme="'neutral'" />
       </router-link>
-      <router-link to="/about" class="navlink">
+      <!-- <router-link to="/about" class="navlink">
         <cool-button :text="'About'" :colortheme="'neutral'" />
-      </router-link>
+      </router-link> -->
       <router-link to="/contact" class="navlink">
         <cool-button :text="'Contact'" :colortheme="'neutral'" />
       </router-link>
@@ -68,9 +68,9 @@
     <router-link @click="closeMenu" to="/portfolio" class="navlinksmol"
       ><cool-button :text="'Portfolio'" :colortheme="'neutral'"
     /></router-link>
-    <router-link @click="closeMenu" to="/about" class="navlinksmol"
+    <!-- <router-link @click="closeMenu" to="/about" class="navlinksmol"
       ><cool-button :text="'About'" :colortheme="'neutral'"
-    /></router-link>
+    /></router-link> -->
     <router-link @click="closeMenu" to="/contact" class="navlinksmol"
       ><cool-button :text="'Contact'" :colortheme="'neutral'"
     /></router-link>
@@ -105,7 +105,7 @@ function closeMenu() {
 } */
 
 .navlink {
-  @apply font-bold w-40 h-9 text-center;
+  @apply font-bold w-52 h-9 text-center;
 }
 
 /* .navlinksmol {
