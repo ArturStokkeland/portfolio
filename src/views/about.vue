@@ -3,7 +3,7 @@
     <h1>About</h1>
     <div class="flex flex-col gap-8 my-4">
       <p>
-        Hello, my name is Artur! I am a software developer with 2 years of
+        Hello, my name is Artur! I am a software developer with 3 years of
         experience and a Masters Degree in Advanced Computer Science. Skilled in
         full stack development and game development, primarily using
         JavaScript/TypeScript and C#. I am currently seeking opportunities to
