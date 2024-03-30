@@ -12,7 +12,7 @@
         <span class="text-cyan-500">Hello</span>, my name is Artur!
       </h2>
       <p class="text-xl">
-        Welcome to my portfolio website. I am a software developer with 3 years
+        Welcome to my portfolio website. I am a software developer with 4 years
         of experience and a Masters Degree in Advanced Computer Science. Skilled
         in full stack development and game development, primarily using
         JavaScript/TypeScript and C#. I am currently seeking opportunities to
